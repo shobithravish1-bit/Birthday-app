@@ -149,7 +149,7 @@
   <div class="blob blob2"></div>
 
   <div class="card">
-    <h1>💖 Happy Birthday 💖</h1>
+    <h1>💖 Happy Birthday  💖</h1>
     <div class="subtitle">For you the one who owns this heart</div>
 
       <img src="image.jpeg" alt="" class="photo" />
@@ -159,24 +159,25 @@
     </div>
 
     <input id="codeInput" placeholder="Enter secret code" />
-    <button onclick="unlockCard()">Unlock Wish</button>
-    <div class="hint">(Darling you know it and its a date.)</div>
+    <button onclick="unlockCard()">click here my darling</button>
+    <div class="hint">(Darling you know what the code is.)</div>
 
     
     <audio id="bgMusic">
-      <source src="audio" type="audio/mpeg" />
-      Your browser does not support the audio element.
+      <source src="audio.mp3" type="audio/mp3" />
+      
     </audio>
   </div>
 
   <script>
     const SECRET_CODE = "0611";
  const wishes = [
-      "Happy Birthday, my love. You make every single day softer, brighter, and more beautiful just by being you. 💕",
-      "On your special day, my heart is just overflowing with gratitude that I get to love you in this lifetime. 🎂",
-      "You are my safe place, my favorite person, and my forever wish come true. Happy Birthday, my love. 🥰",
-      "Happy Birthday, angel. May your day be wrapped in warmth, gentle laughter, and all the softness you give the world. 🌌",
-      "Every moment with you feels like a little miracle. Today we celebrate the day the world received its most precious soul. 🎈"
+      "Happy Birthday my love. You make me smile every single day and you make my dad softer, brighter, and more beautiful just by being you. 💕",
+      "Today is your special day my heart is just overflowing with happiness and gratefulness that I get to love you in this lifetime. 🎂",
+      "Darling you are my safe place, my favorite person, and my forever wish come true. Happy Birthday, my love. 🥰",
+      "Happy Birthday darling. May your day be wrapped in warmth, gentle laughter, and all the softness you give the world.",
+      "Every moment with you feels like home and brings me happiness. "
+      " I love you darling and i hope you have a beautiful year ahead <3"
     ];
 let hasStartedMusic = false;
 
@@ -187,7 +188,7 @@ let hasStartedMusic = false;
 
       if (code !== SECRET_CODE) {
         messageEl.textContent =
-          "Oops! That code is not quite right. Try again, my love.";
+          "My darling that code is not quite right. Try again, my love and another small hint:The first official day <3 (>.<) ";
         return;
       }
 
