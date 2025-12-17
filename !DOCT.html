@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday My Love</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #4f8dd8, #020824);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.6;
+      animation: float 12s infinite alternate;
+    }
+    .blob1 {
+      width: 260px;
+      height: 260px;
+      background: #ff9a9e;
+      top: -40px;
+      left: -40px;
+    }
+    .blob2 {
+      width: 260px;
+      height: 260px;
+      background: #fecfef;
+      bottom: -60px;
+      right: -40px;
+      animation-delay: 2s;
+    }
+    @keyframes float {
+      to {
+        transform: translate3d(40px, 40px, 0);
+        opacity: 0.8;
+      }
+    }
+
+    .card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 24px 22px 26px;
+      border-radius: 20px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      color: #fdfdff;
+    }
+
+    h1 {
+      color: #ffb6e6;
+      margin-bottom: 6px;
+      font-size: 24px;
+      letter-spacing: 0.03em;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #d0d7ff;
+      margin-bottom: 10px;
+    }
+
+    /* Picture styling */
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      margin-bottom: 12px;
+    }
+
+    #message {
+      margin: 10px 0 18px;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #f5f6ff;
+      min-height: 46px;
+    }
+
+    input {
+      padding: 9px 10px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      background: rgba(3, 9, 30, 0.7);
+      color: #f5f7ff;
+      font-size: 14px;
+      text-align: center;
+      outline: none;
+    }
+    input::placeholder {
+      color: #a8b1ff;
+      font-size: 13px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #ff5fa2, #ffc371);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 15px;
+      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      box-shadow: 0 0 18px rgba(255, 111, 169, 0.7);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+    button:hover {
+      transform: translateY(-1px) scale(1.02);
+      box-shadow: 0 0 24px rgba(255, 140, 185, 0.9);
+      filter: brightness(1.05);
+    }
+    button:active {
+      transform: translateY(0) scale(0.99);
+      box-shadow: 0 0 14px rgba(255, 111, 169, 0.6);
+    }
+
+    .hint {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #9db3ff;
+      opacity: 0.9;
+    }
+
+     {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+
+  <div class="card">
+    <h1>💖 Happy Birthday 💖</h1>
+    <div class="subtitle">For you the one who owns this heart</div>
+
+      <img src="WhatsApp Image 2025-12-17 at 14.49.49.jpeg" alt="" class="photo" />
+
+    <div id="message">
+      Enter the secret code to reveal your surprise birthday wish.
+    </div>
+
+    <input id="codeInput" placeholder="Enter secret code" />
+    <button onclick="unlockCard()">Unlock Wish</button>
+    <div class="hint">(Darling you know it and its a date.)</div>
+
+    
+    <audio id="bgMusic">
+      <source src="WhatsApp Audio 2025-12-17 at 14.49.48.mpeg" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    const SECRET_CODE = "0611";
+ const wishes = [
+      "Happy Birthday, my love. You make every single day softer, brighter, and more beautiful just by being you. 💕",
+      "On your special day, my heart is just overflowing with gratitude that I get to love you in this lifetime. 🎂",
+      "You are my safe place, my favorite person, and my forever wish come true. Happy Birthday, my love. 🥰",
+      "Happy Birthday, angel. May your day be wrapped in warmth, gentle laughter, and all the softness you give the world. 🌌",
+      "Every moment with you feels like a little miracle. Today we celebrate the day the world received its most precious soul. 🎈"
+    ];
+let hasStartedMusic = false;
+
+    function unlockCard() {
+      const code = document.getElementById("codeInput").value.trim();
+      const messageEl = document.getElementById("message");
+      const music = document.getElementById("bgMusic");
+
+      if (code !== SECRET_CODE) {
+        messageEl.textContent =
+          "Oops! That code is not quite right. Try again, my love.";
+        return;
+      }
+
+
+      const index = Math.floor(Math.random() * wishes.length);
+      messageEl.textContent = wishes[index];
+
+     
+      if (music && !hasStartedMusic) {
+        hasStartedMusic = true;
+       
+        music.loop = true; 
+        music.play().then(() =>
+console.log("Music is playing")).catch(err => {
+console.error("Music error:",err);
+messageE1.textContent += "(tap again or check that the music file path is correct.)";
+});
+      }
+    }
+  </script>
+</body>
+</html>
