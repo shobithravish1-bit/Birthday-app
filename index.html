@@ -1,8 +1,16 @@
+
+      
+        
+
+    
+     
+     
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Happy Birthday My Love</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -22,6 +30,7 @@
       opacity: 0.6;
       animation: float 12s infinite alternate;
     }
+
     .blob1 {
       width: 260px;
       height: 260px;
@@ -29,6 +38,7 @@
       top: -40px;
       left: -40px;
     }
+
     .blob2 {
       width: 260px;
       height: 260px;
@@ -37,6 +47,7 @@
       right: -40px;
       animation-delay: 2s;
     }
+
     @keyframes float {
       to {
         transform: translate3d(40px, 40px, 0);
@@ -63,7 +74,6 @@
       color: #ffb6e6;
       margin-bottom: 6px;
       font-size: 24px;
-      letter-spacing: 0.03em;
     }
 
     .subtitle {
@@ -72,7 +82,6 @@
       margin-bottom: 10px;
     }
 
-    /* Picture styling */
     .photo {
       width: 120px;
       height: 120px;
@@ -87,26 +96,19 @@
       margin: 10px 0 18px;
       font-size: 15px;
       line-height: 1.5;
-      color: #f5f6ff;
       min-height: 46px;
     }
 
     input {
       padding: 9px 10px;
       width: 100%;
-      box-sizing: border-box;
       margin-bottom: 12px;
       border-radius: 999px;
       border: 1px solid rgba(255, 255, 255, 0.45);
       background: rgba(3, 9, 30, 0.7);
-      color: #f5f7ff;
-      font-size: 14px;
+      color: #fff;
       text-align: center;
       outline: none;
-    }
-    input::placeholder {
-      color: #a8b1ff;
-      font-size: 13px;
     }
 
     button {
@@ -118,68 +120,55 @@
       font-size: 15px;
       cursor: pointer;
       font-weight: 600;
-      letter-spacing: 0.03em;
       box-shadow: 0 0 18px rgba(255, 111, 169, 0.7);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-    }
-    button:hover {
-      transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 0 24px rgba(255, 140, 185, 0.9);
-      filter: brightness(1.05);
-    }
-    button:active {
-      transform: translateY(0) scale(0.99);
-      box-shadow: 0 0 14px rgba(255, 111, 169, 0.6);
+      margin-top: 6px;
     }
 
-    .hint {
-      margin-top: 8px;
-      font-size: 11px;
-      color: #9db3ff;
-      opacity: 0.9;
-    }
-
-     {
+    #nextBtn {
       display: none;
+      margin-top: 14px;
+      background: linear-gradient(135deg, #6ae3ff, #9f8cff);
+      box-shadow: 0 0 18px rgba(120, 160, 255, 0.7);
     }
   </style>
 </head>
+
 <body>
   <div class="blob blob1"></div>
   <div class="blob blob2"></div>
 
   <div class="card">
-    <h1>💖 Happy Birthday  💖</h1>
-    <div class="subtitle">For you the one who owns this heart</div>
+    <h1>💖 Happy Birthday 💖</h1>
+    <div class="subtitle">For you, the one who owns my heart</div>
 
-      <img src="image.jpeg" alt="" class="photo" />
+    <img src="image.jpeg" class="photo" alt="Photo" />
 
     <div id="message">
-      Enter the secret code to reveal your surprise birthday wish.
+      Enter the secret code to reveal your birthday wish.
     </div>
 
     <input id="codeInput" placeholder="Enter secret code" />
-    <button onclick="unlockCard()">click here my darling</button>
-    <div class="hint">(Darling you know what the code is.)</div>
+    <button onclick="unlockCard()">Click here my darling</button>
 
-    
-    <audio id="bgMusic">
-      <source src="audio.mp3" type="audio/mpeg" />
-      
+    <button id="nextBtn" onclick="goNext()">Continue ➜</button>
+
+    <audio id="bgMusic" loop>
+      <source src="audio.mp3" type="audio/mpeg">
     </audio>
   </div>
 
   <script>
     const SECRET_CODE = "0611";
- const wishes = [
-      "Happy Birthday my love. You make me smile every single day and you make my dad softer, brighter, and more beautiful just by being you. 💕",
-      "Today is your special day my heart is just overflowing with happiness and gratefulness that I get to love you in this lifetime. 🎂",
-      "Darling you are my safe place, my favorite person, and my forever wish come true. Happy Birthday, my love. 🥰",
-      "Happy Birthday darling. May your day be wrapped in warmth, gentle laughter, and all the softness you give the world.",
-      "Every moment with you feels like home and brings me happiness. I love you darling and i hope you have a beautiful year ahead <3 "
-      
+
+    const wishes = [
+      "Happy Birthday my love. You make me smile every single day and make my day softer, brighter and beautiful just by being you 💕",
+      "Every moment with you feels like home and brings me happiness i love you my darling and i really hope you have a really great year ahead <3",
+      "You are my safe place, my happiness, my forever 🥰",
+      "May your birthday be wrapped in warmth ,gentle,lovely and be filled with laughter",
+      "Today is your special day my darling i hope you be happy and im thankful and grateful to have you in my life ❤️"
     ];
-let hasStartedMusic = false;
+
+    let hasStartedMusic = false;
 
     function unlockCard() {
       const code = document.getElementById("codeInput").value.trim();
@@ -187,26 +176,21 @@ let hasStartedMusic = false;
       const music = document.getElementById("bgMusic");
 
       if (code !== SECRET_CODE) {
-        messageEl.textContent =
-          "My darling that code is not quite right. Try again, my love and another small hint:The first official day <3 (>.<) ";
+        messageEl.textContent = "Not quite right, my love 💗 Try again.(another hint 'the first day'";
         return;
       }
 
+      messageEl.textContent = wishes[Math.floor(Math.random() * wishes.length)];
+      document.getElementById("nextBtn").style.display = "inline-block";
 
-      const index = Math.floor(Math.random() * wishes.length);
-      messageEl.textContent = wishes[index];
-
-     
-      if (music && !hasStartedMusic) {
+      if (!hasStartedMusic) {
         hasStartedMusic = true;
-       
-        music.loop = true; 
-        music.play().then(() =>
-console.log("Music is playing")).catch(err => {
-console.error("Music error:",err);
-messageE1.textContent += "(tap again or check that the music file path is correct.)";
-});
+        music.play().catch(() => {});
       }
+    }
+
+    function goNext() {
+      window.location.href = "page2.html"; // next page file
     }
   </script>
 </body>
